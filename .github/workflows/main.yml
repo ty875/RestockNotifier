@@ -1,7 +1,8 @@
 name: Restock Check
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 5 * * *'   # 12:00 AM EST
+    - cron: '0 17 * * *'  # 12:00 PM EST
   workflow_dispatch:
 jobs:
   check-stock:
