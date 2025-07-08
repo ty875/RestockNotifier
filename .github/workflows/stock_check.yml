@@ -2,7 +2,8 @@ name: Restock Check
 
 on:
   schedule:
-    - cron: '30 21 * * *'  # 21 = 9 PM in 24h, so 9:30 PM UTC
+      - cron: '30 2 * * *'  # 02:30 AM UTC (which is 9:30 PM EST previous day)
+
 
 
 jobs:
