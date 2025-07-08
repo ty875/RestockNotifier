@@ -1,27 +1,23 @@
 name: Restock Check
-
 on:
   schedule:
-  - cron: '*/10 * * * *'
+    # Runs every 10 minutes for testing
+    - cron: '*/10 * * * *'
   workflow_dispatch:
 
 jobs:
   check-stock:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.12'
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
       - name: Run restock script
         env:
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
