@@ -1,7 +1,7 @@
 name: Restock Check
 on:
   schedule:
-    # Runs every 10 minutes for testing
+    # Runs every 2 minutes for testing
     - cron: '*/10 * * * *'
   workflow_dispatch:
 
