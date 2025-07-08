@@ -8,7 +8,7 @@ from discord.ext import tasks
 load_dotenv()
 
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")
-CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
+CHANNEL_ID = int(os.getenv("DISCORD_CHANNEL_ID"))
 PRODUCT_URL = os.getenv("PRODUCT_URL")
 
 intents = discord.Intents.default()
