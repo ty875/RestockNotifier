@@ -2,7 +2,8 @@ name: Restock Check
 
 on:
   schedule:
-      - cron: '30 2 * * *'  # 02:30 AM UTC (which is 9:30 PM EST previous day)
+  - cron: '24 2 * * *'  # Runs daily at 9:24 PM EST (2:24 AM UTC)
+
 
 
 
