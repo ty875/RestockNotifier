@@ -3,7 +3,6 @@ import discord
 import requests
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
-from discord.ext import tasks
 
 load_dotenv()
 
@@ -23,8 +22,7 @@ def is_product_in_stock():
     stock_status = soup.find('p', class_='stock single-stock-status out-of-stock')
     return stock_status is None  # If out-of-stock text not found, product is in stock
 
-@tasks.loop(hours=12)
-async def check_stock():
+async def check_stock_once():
     channel = client.get_channel(CHANNEL_ID)
     if channel is None:
         print(f"⚠️ Channel ID {CHANNEL_ID} not found or bot can't access it.")
@@ -37,6 +35,7 @@ async def check_stock():
 @client.event
 async def on_ready():
     print(f"Logged in as {client.user}")
-    check_stock.start()
+    await check_stock_once()
+    await client.close()  # Optionally shut down bot after one run
 
 client.run(TOKEN)
