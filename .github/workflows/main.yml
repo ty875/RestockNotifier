@@ -1,9 +1,9 @@
 name: Restock Check
-workflow_dispatch: 
+
 on:
   schedule:
-  - cron: '24 2 * * *'  # Runs daily at 9:24 PM EST (2:24 AM UTC)
-
+    - cron: '24 01 * * *'  # 9:24 PM EST daily (1:24 AM UTC)
+  workflow_dispatch:
 
 jobs:
   check-stock:
@@ -15,14 +15,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.12'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Restock check script
+      - name: Run restock script
         env:
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
